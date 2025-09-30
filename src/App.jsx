@@ -5,6 +5,7 @@ import ProfilePage from "./pages/ProfilePage"
 import ReportsPage from "./pages/ReportsPage"
 import SplashPage from "./pages/SplashPage"
 import TransactionsPage from "./pages/TransactionsPage"
+import Layout from "./components/Layout"
 
 function App() {
  
@@ -13,10 +14,14 @@ function App() {
     <Routes>
       <Route path="/" element={<SplashPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
-      <Route path="/transactions" element={<TransactionsPage />} />
-      <Route path="/reports" element={<ReportsPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
+
+      <Route element={<Layout />}>
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/transactions" element={<TransactionsPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Route>
+
     </Routes>
   );
 }
