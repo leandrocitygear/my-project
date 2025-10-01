@@ -6,6 +6,7 @@ import ReportsPage from "./pages/ReportsPage"
 import SplashPage from "./pages/SplashPage"
 import TransactionsPage from "./pages/TransactionsPage"
 import Layout from "./components/Layout"
+import SignupPage from "./pages/SignupPage"
 
 function App() {
  
@@ -14,6 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element={<SplashPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage/>} />
 
       <Route element={<Layout />}>
         <Route path="/dashboard" element={<DashboardPage />} />

@@ -3,6 +3,7 @@ import cloudIcon from "../assets/cloud_24dp_059669_FILL0_wght400_GRAD0_opsz24.sv
 import moneyIcon from "../assets/attach_money_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg"
 import csvIcon from "../assets/download_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg"
 import bellIcon from "../assets/notification_sound_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg"
+import { Link } from "react-router";
 
 
 function SplashPage() {
@@ -13,9 +14,9 @@ function SplashPage() {
             <header className="w-full bg-emerald-600 text-white px-8 py-4 flex justify-between items-center shadow">
                 <h1 className="text-base sm:text-2xl font-bold">Personal Finance Tracker</h1>
                 <nav>
-                <a href="/login" className="bg-white text-emerald-600 px-4 py-2 rounded-md font-medium hover:bg-gray-100 transition">
+                <Link to="/login" className="bg-white text-emerald-600 px-4 py-2 rounded-md font-medium hover:bg-gray-100 transition">
                     Log In
-                </a>
+                </Link>
                 </nav>
          </header>
         <main className="pt-8 flex-1 flex flex-col justify-center items-center text-center bg-gray-100">
@@ -26,12 +27,12 @@ function SplashPage() {
           Track your income, expenses, and budgets with clean visual reports. Stay on top of your money with ease.
         </p>
         <section className="flex gap-4">	
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition"
           >
             Get Started
-          </a>
+          </Link>
           <a
             href="#features"
             className="bg-white text-emerald-600 border border-emerald-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
