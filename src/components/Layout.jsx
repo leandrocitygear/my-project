@@ -4,12 +4,15 @@ import Sidebar from "./Sidebar";
 
 export default function Layout({ children }) {
   return (
-    <div className="">
-      <Navbar />
+    <div className="flex bg-gray-200 min-h-screen ">
       <Sidebar />
+      <Navbar />
 
       {/* Main page content */}
-      <main className="flex-grow">{children}</main>
+      {/* <main className="flex border border-red-500">{children}
+        
+
+      </main> */}
 
     </div>
   );
