@@ -1,6 +1,6 @@
 function Navbar() {
     return (
-         <div className="flex-1 flex flex-col">
+         <div className="">
         {/* Navbar */}
         <header className="bg-white shadow px-6 py-4 flex justify-between items-center">
           <h1 className="text-xl font-bold text-emerald-600">Personal Finance Tracker</h1>
@@ -8,11 +8,6 @@ function Navbar() {
             Welcome Leandro
           </div>
         </header>
-
-        {/* Page Content */}
-        <main className="flex-1 border-2 p-6">
-          {/* <Outlet /> */} jjdjdjdjdjdjd
-        </main>
         </div>
     )
 }
