@@ -7,11 +7,11 @@ import TransactionsTable from "../components/Transactions/TransactionsTable"
 function TransactionsPage() {
 
     return (
-        <div className="lg:pl-16 lg:pr-16 space-y-6 pb-16">
-            <div className="flex items-center mb-6" >
+        <div className="lg:pl-16 lg:pr-16 space-y-6">
+            {/* <div className="flex items-center mb-6" >
                     <img src={transactionsIcon} alt="" />
                 <h1 className="text-3xl font-medium ">Transactions</h1>
-            </div>
+            </div> */}
             
             <TransactionsTable />
 

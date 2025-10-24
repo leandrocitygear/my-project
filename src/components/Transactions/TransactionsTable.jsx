@@ -8,7 +8,7 @@ function TransactionsTable() {
 
 
     return (
-        <div className="bg-white p-4 rounded-lg shadow  lg:col-span-2 min-h-screen">
+        <div className="bg-white p-4 rounded-lg shadow  lg:col-span-2 h-screen">
 
           <div className="flex justify-between items-center p-2">
             <h4 className="text-lg font-semibold ">All Transactions</h4>

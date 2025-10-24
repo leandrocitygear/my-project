@@ -18,6 +18,9 @@ function RecentTransactions () {
 
           <div className="flex justify-between items-center p-2">
             <h4 className="text-lg font-semibold ">Recent Transactions</h4>
+            <Link to="/transactions" className="cursor-pointer bg-gray-400 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-gray-600 transition">
+              View All Transactions
+            </Link>
             <Link to="/addtransaction" className="cursor-pointer bg-emerald-600 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-emerald-700 transition">
               Add Transaction
             </Link>
