@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 
 
 function RecentTransactions () {
@@ -13,9 +14,16 @@ function RecentTransactions () {
     ]
 
     return (
-        <div className="bg-white p-4 rounded-lg shadow  lg:col-span-2 h-80">
+        <div className="bg-white p-4 rounded-lg shadow  lg:col-span-2 max-h-80">
+
+          <div className="flex justify-between items-center p-2">
             <h4 className="text-lg font-semibold ">Recent Transactions</h4>
-             <div className="max-h-64 overflow-y-auto">
+            <Link to="/addtransaction" className="cursor-pointer bg-emerald-600 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-emerald-700 transition">
+              Add Transaction
+            </Link>
+          </div>
+
+             <div className="h-[calc(100%-3rem)] overflow-y-auto">
     <table className="min-w-full border-collapse">
       <thead className="sticky top-0 border-b border-gray-400 text-left text-sm tracking-wider bg-gray-100">
         <tr>

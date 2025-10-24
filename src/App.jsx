@@ -7,6 +7,8 @@ import SplashPage from "./pages/SplashPage"
 import TransactionsPage from "./pages/TransactionsPage"
 import Layout from "./components/Layout"
 import SignupPage from "./pages/SignupPage"
+import AddTransactionForm from "./pages/AddTransactionForm"
+import AddBudgetForm from "./pages/AddBudgetForm"
 
 function App() {
  
@@ -23,6 +25,8 @@ function App() {
         <Route path="/transactions" element={<TransactionsPage />} />
         <Route path="/reports" element={<ReportsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/addtransaction" element={<AddTransactionForm />}/>
+        <Route path="/addbudget" element={<AddBudgetForm />}/>
       </Route>
 
     </Routes>

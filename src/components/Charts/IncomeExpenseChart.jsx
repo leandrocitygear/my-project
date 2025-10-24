@@ -55,7 +55,7 @@ function IncomeExpenseChart() {
             </div>
         </div>
     )
-
+ 
 }
 
 export default IncomeExpenseChart

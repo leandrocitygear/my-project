@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function BudgetProgress() {
   const budgets = [
     { category: "Food", spent: 350, limit: 500, color: "bg-emerald-600" },
@@ -7,7 +9,12 @@ export default function BudgetProgress() {
 
   return (
     <div className="bg-white p-4 rounded-lg shadow h-80">
+      <div className="flex justify-between items-center p-2">
       <h3 className="text-lg font-semibold mb-4">Budget Progress</h3>
+      <Link to="/addbudget" className="cursor-pointer bg-emerald-600 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-emerald-700 transition">
+          Add Budget
+      </Link>
+      </div>
 
       <div className="space-y-4">
         {budgets.map((b) => {
