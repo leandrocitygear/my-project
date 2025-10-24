@@ -1,29 +1,30 @@
 import { Link } from "react-router";
+import { transactionsMockData } from "../../MockData";
 
 
 function RecentTransactions () {
 
-    const transactionsMockData = [
-        { date: "Oct 15, 2025", description: "Freelance Project", category: "Deposit", type: "Income", amount: "$500.00" },
-        { date: "Oct 12, 2025", description: "Groceries", category: "Food", type: "Expense", amount: "$80.00" },
-        { date: "Oct 10, 2025", description: "Water bill", category: "Utility", type: "Expense", amount: "$40.00" },
-        { date: "Oct 9, 2025", description: "Work", category: "Paycheck", type: "Income", amount: "$2380.00" },
-        { date: "Oct 3, 2025", description: "Friend send money", category: "Venmo", type: "Income", amount: "$180.00" },
-        { date: "Oct 2, 2025", description: "Subway", category: "Food", type: "Expense", amount: "$20.00" },
+  const itemsPerPage = 10;
 
-    ]
+   const sortedTransactions = [...transactionsMockData].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  )
+  
+  const mostRecent = sortedTransactions.slice(0, itemsPerPage)
 
     return (
         <div className="bg-white p-4 rounded-lg shadow  lg:col-span-2 max-h-80">
 
           <div className="flex justify-between items-center p-2">
             <h4 className="text-lg font-semibold ">Recent Transactions</h4>
-            <Link to="/transactions" className="cursor-pointer bg-gray-400 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-gray-600 transition">
+            <div className="flex gap-2">
+            <Link to="/transactions" className="cursor-pointer bg-gray-500 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-gray-600 transition">
               View All Transactions
             </Link>
             <Link to="/addtransaction" className="cursor-pointer bg-emerald-600 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-emerald-700 transition">
               Add Transaction
             </Link>
+            </div>
           </div>
 
              <div className="h-[calc(100%-3rem)] overflow-y-auto">
@@ -38,8 +39,8 @@ function RecentTransactions () {
         </tr>
       </thead>
       <tbody >
-        {transactionsMockData.map((t) => (
-        <tr key={t.id} className="border-b border-gray-300 hover:bg-gray-50 text-gray-700">
+        {mostRecent.map((t, i) => (
+        <tr key={i} className="border-b border-gray-300 hover:bg-gray-50 text-gray-700">
           <td className="py-3 px-4">{t.date}</td>
           <td className="py-3 px-4">{t.description}</td>
           <td className="py-3 px-4">{t.category}</td>

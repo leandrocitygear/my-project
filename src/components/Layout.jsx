@@ -10,7 +10,7 @@ export default function Layout() {
       <Sidebar />
 
       <div className="flex flex-col flex-1 overflow-hidden">
-      <Navbar />
+      {/* <Navbar /> */}
       <MainContent />
 </div>
     </div>
