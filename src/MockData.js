@@ -5,7 +5,6 @@ export const transactionsMockData = [
   { date: "Oct 9, 2025", description: "Work", category: "Paycheck", type: "Income", amount: "$2380.00" },
   { date: "Oct 3, 2025", description: "Friend send money", category: "Venmo", type: "Income", amount: "$180.00" },
   { date: "Oct 2, 2025", description: "Subway", category: "Food", type: "Expense", amount: "$20.00" },
-
   { date: "Oct 16, 2025", description: "Amazon Purchase", category: "Shopping", type: "Expense", amount: "$55.00" },
   { date: "Oct 17, 2025", description: "Netflix", category: "Subscription", type: "Expense", amount: "$16.99" },
   { date: "Oct 18, 2025", description: "Gas Station", category: "Transport", type: "Expense", amount: "$45.00" },

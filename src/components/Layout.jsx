@@ -1,5 +1,3 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import Sidebar from "./Sidebar";
 import MainContent from "./MainContent";
 
@@ -10,7 +8,6 @@ export default function Layout() {
       <Sidebar />
 
       <div className="flex flex-col flex-1 overflow-hidden">
-      {/* <Navbar /> */}
       <MainContent />
 </div>
     </div>

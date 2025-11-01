@@ -1,10 +1,29 @@
 import { Link } from "react-router";
 import { transactionsMockData } from "../../MockData";
+import { useState, useRef, useEffect } from "react";
+import AddTransactionForm from "./AddTransactionForm";
 
 
 function RecentTransactions () {
+    const [showAddTransForm, setShowAddTransForm] = useState(false);
 
-  const itemsPerPage = 10;
+    const addRef = useRef();
+
+    useEffect(() => {
+    function handleClickOutside(event) {
+      if (addRef.current && !addRef.current.contains(event.target)) {
+        setShowAddTransForm(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+
+  const itemsPerPage = 25;
 
    const sortedTransactions = [...transactionsMockData].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
@@ -21,9 +40,20 @@ function RecentTransactions () {
             <Link to="/transactions" className="cursor-pointer bg-gray-500 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-gray-600 transition">
               View All Transactions
             </Link>
-            <Link to="/addtransaction" className="cursor-pointer bg-emerald-600 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-emerald-700 transition">
+
+            <div ref={addRef} className="">
+            <button onClick={() => {
+              setShowAddTransForm(!showAddTransForm);
+              }} className="cursor-pointer bg-emerald-600 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-emerald-700 transition">
               Add Transaction
-            </Link>
+            </button>
+            {showAddTransForm && (
+              <div className="absolute"> 
+
+                <AddTransactionForm />
+              </div>
+            )}
+            </div>
             </div>
           </div>
 
