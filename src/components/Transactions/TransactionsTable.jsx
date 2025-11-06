@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router";
 import { transactionsMockData } from "../../MockData";
 import Filters from "./Filters";
 import transactionsIcon from "../../assets/attach_money_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg";
 import AddTransactionForm from "./AddTransactionForm";
+import closeIcon from "../../assets/closeBlack.svg"
+import DeleteEditTransaction from "./DeleteEditTransaction";
 
 function TransactionsTable() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -11,6 +12,7 @@ function TransactionsTable() {
   const [sortOrder, setSortOrder] = useState("recent");
   const [showFilters, setShowFilters] = useState(false);
   const [showAddTransForm, setShowAddTransForm] = useState(false);
+  const [showDeleteEditBox, setShowDeleteEditBox] = useState(false);
   const itemsPerPage = 25;
 
   const sortedTransactions = [...transactionsMockData].sort(
@@ -63,6 +65,14 @@ function TransactionsTable() {
               <img src={transactionsIcon} alt="Transactions" className="w-6 h-6" />
               <h1 className="text-3xl font-medium">Transactions</h1>
             </div>
+            {showDeleteEditBox && (
+              <div className=" flex items-center bg-gray-300  px-2 py-1 rounded-4xl gap-2"> 
+              <DeleteEditTransaction/>
+          
+              <button onClick={() => {setShowDeleteEditBox(false)}} className="cursor-pointer border border-transparent rounded-lg hover:bg-gray-500" title="Close Form"><img src={closeIcon} alt="" /></button>
+            
+            </div>
+            )}
             <div className="flex gap-2">
               <div ref={filtersRef}>
                 <button className="cursor-pointer bg-gray-500 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-gray-600 transition" onClick={() => {
@@ -105,16 +115,23 @@ function TransactionsTable() {
               </div>
             
             <div ref={addRef} className="flex">
-            <button className="cursor-pointer bg-emerald-600 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-emerald-700 transition" onClick={() => {
+            <button className="cursor-pointer bg-emerald-600 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-emerald-700" onClick={() => {
               setShowAddTransForm(!showAddTransForm);
               setShow(false);
               setShowFilters(false);
             }}>
               Add Transaction
             </button>
-            {showAddTransForm && (
-            <AddTransactionForm />
-            )}
+
+              {showAddTransForm && (
+                <div className="bg-gray-300 shadow-sm absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-4xl  w-80  p-6">
+                  <div className="flex justify-end">
+                  <button onClick={()=> setShowAddTransForm(false)} className="cursor-pointer border border-transparent rounded-lg hover:bg-gray-500" title="Close Form"><img src={closeIcon} alt="" /></button>
+                  </div>
+                  <AddTransactionForm />
+                  
+                </div>
+                )}
             </div>
 
             </div>
@@ -136,7 +153,8 @@ function TransactionsTable() {
                 {currentItems.map((t, i) => (
                   <tr
                     key={i}
-                    className="border-b border-gray-300 hover:bg-gray-50 text-gray-700"
+                    className="border-b border-gray-300 hover:bg-gray-50 text-gray-700 cursor-pointer"
+                    onClick={() =>{setShowDeleteEditBox(!showDeleteEditBox)}}
                   >
                     <td className="py-3 px-4">{t.date}</td>
                     <td className="py-3 px-4">{t.description}</td>

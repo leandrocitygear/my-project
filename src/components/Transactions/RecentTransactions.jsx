@@ -2,6 +2,8 @@ import { Link } from "react-router";
 import { transactionsMockData } from "../../MockData";
 import { useState, useRef, useEffect } from "react";
 import AddTransactionForm from "./AddTransactionForm";
+import closeIcon from "../../assets/closeBlack.svg"
+
 
 
 function RecentTransactions () {
@@ -41,18 +43,22 @@ function RecentTransactions () {
               View All Transactions
             </Link>
 
-            <div ref={addRef} className="">
+            <div ref={addRef} className="flex">
             <button onClick={() => {
               setShowAddTransForm(!showAddTransForm);
               }} className="cursor-pointer bg-emerald-600 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-emerald-700 transition">
               Add Transaction
             </button>
-            {showAddTransForm && (
-              <div className="absolute"> 
 
-                <AddTransactionForm />
-              </div>
-            )}
+             {showAddTransForm && (
+                <div className="bg-gray-300 shadow-sm absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-4xl  w-80  p-6">
+                  <div className="flex justify-end">
+                  <button onClick={()=> setShowAddTransForm(false)} className="cursor-pointer border border-transparent rounded-lg hover:bg-gray-500" title="Close Form"><img src={closeIcon} alt="" /></button>
+                  </div>
+                  <AddTransactionForm />
+                  
+                </div>
+                )}
             </div>
             </div>
           </div>

@@ -21,7 +21,7 @@ function Sidebar() {
     return (
             <div className={`${isOpen ? "w-64" : "w-15"} bg-gray-800 text-gray-200 min-h-screen p-4 transition-all duration-300 flex flex-col`}>
                 <button onClick={() => setIsOpen(!isOpen)}
-                className="text-gray-200 focus:outline-none mb-6"
+                className="text-gray-200 focus:outline-none mb-6 cursor-pointer"
                 >
                  {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
@@ -33,9 +33,9 @@ function Sidebar() {
                     <Link to="/transactions" className="flex items-center gap-2 hover:text-white mb-6 text-nowrap text-xl h-8">
                      <img src={transactionsIcon} alt="transactions icon" title="Transactions"/> {isOpen && "Transactions"}
                     </Link>
-                    <Link to="/reports" className="flex items-center gap-2 hover:text-white mb-6 text-nowrap text-xl h-8">
+                    {/* <Link to="/reports" className="flex items-center gap-2 hover:text-white mb-6 text-nowrap text-xl h-8">
                     <img src={chartIcon} alt="reports icon" title="Reports"/> {isOpen && "Reports"}
-                    </Link>
+                    </Link> */}
                     <Link to="/profile" className="flex items-center gap-2 hover:text-white mb-6 text-nowrap text-xl h-8">
                     <img src={profileIcon} alt="Profile icon" title="Profile"/> {isOpen && "Profile"} 
                     </Link>
