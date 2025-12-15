@@ -6,22 +6,39 @@ import UserSettingsOptions from "../components/UserSettingsOptions"
 function ProfilePage() {
 
     return (
-        <div className="p-10 border bg-white">
+        <div className="lg:pl-16 lg:pr-16 space-y-6">
+        <div className="bg-white p-4 gap-6 rounded-lg shadow  h-[calc(100vh-2rem)] flex flex-col">
 
-            <div className="flex items-center gap-2 border">
+            <div className="flex items-center  ">
             <img src={profileIcon} alt="" className="w-6 h-6"/>
              <h1 className="text-3xl font-medium">Profile</h1>   
             </div>
 
-            <div className="flex border items-center gap-4">
-                <img src={userPic} alt="" className="h-20 w-20 rounded-[100px] border" />
-                <h3 className="font-semibold text-lg">johndoe@example.com</h3>
+            <div className="gap-6 flex flex-col h-[calc(100vh-8rem)]">
+
+            <div className="rounded-full bg-gray-300 p-1  flex items-center grid grid-cols-2">
+
+                <div className="flex items-center gap-4 borde">
+                <img src={userPic} alt="" className="h-15 w-15 rounded-[100px] border" />
+                <h3 className="font-semibold  text-lg">johndoe@example.com</h3>
+                </div>
+
+                
+                <h2 className="text-3xl borde">Settings</h2>
+
             </div>
 
-            <div>
-                <h2 className="text-3xl">Settings</h2>
+            <div className="borde flex justify-">
+
+               
+                
+
                 <UserSettingsOptions />
+            
             </div>
+            </div>
+
+        </div>
         </div>
     )
 }
