@@ -7,12 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
     "@tailwindcss/vite": "^4.1.13",
     "chart.js": "^4.5.0",
+    "jest": "^30.3.0",
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-chartjs-2": "^5.3.0",
@@ -20,6 +22,7 @@
     "react-redux": "^9.2.0",
     "react-router": "^7.9.1",
     "redux-thunk": "^3.1.0",
+    "save-dev": "^0.0.1-security",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
