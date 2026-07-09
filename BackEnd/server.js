@@ -1,11 +1,17 @@
-import express from 'express';
-const app = express()
-const port = 3000
+import express from 'express'
+import cors from 'cors'
+import router from './signupRouter.js'
+import loginRouter from './loginRouter.js';
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+const app = express();
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+app.use(cors());
+app.use(express.json());
+
+app.use("/api", router);
+app.use("/api", loginRouter);
+
+app.listen(5000, () => {
+    console.log('Server running');
+});
+

@@ -1,17 +1,59 @@
 import { useState } from "react"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 
 
 
 function LoginPage() {
 
+    const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = async (e) => {
+
+    e.preventDefault();
+
+    try {
+
+        const response = await fetch("http://localhost:5000/api/login", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+
+        });
+
+
+        const data = await response.json();
+
+
+        if (!response.ok) {
+            alert(data.message);
+            return;
+        }
+
+
+        alert("Login successful!");
+
+        navigate("/dashboard");
+
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert("Something went wrong.");
+
     }
 
+};
     return (
         <section className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
             <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
