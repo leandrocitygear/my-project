@@ -1,5 +1,4 @@
-import lightMode from '../assets/sunwhite.svg'
-import darkMode from '../assets/dark_mode_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg'
+
 import { useState, useEffect } from 'react'
 
 
