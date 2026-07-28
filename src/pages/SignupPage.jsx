@@ -40,7 +40,7 @@ function SignupPage() {
                 return;
             }
 
-            alert("Account created!");
+            // alert("Account created!");
             navigate("/dashboard");
 
         } catch (err) {

@@ -40,7 +40,7 @@ function LoginPage() {
         }
 
 
-        alert("Login successful!");
+        // alert("Login successful!");
 
         navigate("/dashboard");
 
