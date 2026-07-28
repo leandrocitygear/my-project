@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router"
 import DashboardPage from "./pages/DashboardPage"
 import LoginPage from "./pages/LoginPage"
 import ProfilePage from "./pages/ProfilePage"
-import ReportsPage from "./pages/ReportsPage"
 import SplashPage from "./pages/SplashPage"
 import Layout from "./components/Layout"
 import SignupPage from "./pages/SignupPage"
@@ -20,7 +19,6 @@ function App() {
 
       <Route element={<Layout />}>
         <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/reports" element={<ReportsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Route>
 

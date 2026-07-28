@@ -59,7 +59,7 @@ function RecentTransactions () {
   }, []);
 
   return (
-        <div className="bg-white p-4 rounded-lg shadow  h-[calc(100vh-2rem)] flex flex-col">
+        <div className="bg-white p-4 rounded-lg shadow h-full flex flex-col lg:col-span-2 border-2">
           {/* Header */}
           <div className="flex justify-between items-center border-b pb-2 flex-shrink-0">
             <div className="flex items-center gap">
