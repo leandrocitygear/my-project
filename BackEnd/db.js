@@ -6,7 +6,7 @@ const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'personalFinanceTrackerDB',
-    password: 'Duban@Nexus6P7430@',
+    password: process.env.DATABASE_URL,
     port: 5432,
 });
 
