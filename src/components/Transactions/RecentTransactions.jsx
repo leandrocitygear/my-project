@@ -59,7 +59,7 @@ function RecentTransactions () {
   }, []);
 
   return (
-        <div className="bg-white p-4 rounded-lg shadow h-full flex flex-col lg:col-span-2 border-2">
+        <div className="bg-white p-4 rounded-lg shadow flex flex-col lg:col-span-2 min-w-0 min-h-0 lg:h-[75vh]">
           {/* Header */}
           <div className="flex justify-between items-center border-b pb-2 flex-shrink-0">
             <div className="flex items-center gap">
@@ -139,8 +139,8 @@ function RecentTransactions () {
           </div>
 
           {/* Table */}
-          <div className="flex-1 overflow-y-auto mt-2">
-            <table className="min-w-full border-collapse">
+          <div className="flex-1 min-h-0 min-w-0 overflow-auto mt-2">
+            <table className="w-full min-w-0 border-collapse">
               <thead className="sticky top-0 border-b border-gray-400 text-left text-sm tracking-wider bg-gray-100">
                 <tr>
                   <th className="py-3 px-4">Date</th>

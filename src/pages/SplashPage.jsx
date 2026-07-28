@@ -12,7 +12,7 @@ function SplashPage() {
 
         <div className="h-screen flex flex-col">
             <header className="w-full bg-emerald-600 text-white px-8 py-4 flex justify-between items-center shadow">
-                <h1 className="text-base sm:text-2xl font-bold">Personal Finance Tracker</h1>
+                <h1 className="text-base sm:text-2xl font-bold">UPBUDGET</h1>
                 <nav>
                 <Link to="/login" className="bg-white text-emerald-600 px-4 py-2 rounded-md font-medium hover:bg-gray-100 transition">
                     Log In
@@ -33,12 +33,6 @@ function SplashPage() {
           >
             Get Started
           </Link>
-          <a
-            href="#features"
-            className="bg-white text-emerald-600 border border-emerald-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
-          >
-            Learn More
-          </a>
         </section>
       
 
@@ -56,24 +50,16 @@ function SplashPage() {
             <p className="text-gray-700">See clear charts that show where your money is going.</p>
           </div>
           <div className="flex items-center flex-col p-6 bg-gray-50 rounded-lg shadow hover:shadow-md transition">
-            <h4 className="flex items-center text-lg font-semibold text-emerald-600 mb-2"> <img src={cloudIcon} alt="cloud icon" className="w-5 h-5 mr-1" />Cloud Sync</h4>
-            <p className="text-gray-700">Securely save your data with Firebase for access anywhere.</p>
-          </div>
-          <article className="flex items-center flex-col p-6 bg-gray-50 rounded-lg shadow hover:shadow-md transition">
             <h4 className="flex items-center text-lg font-semibold text-emerald-600 mb-2"> <img src={csvIcon} alt="csv Icon" className="w-5 h-5 mr-1" />Export Data</h4>
             <p className="text-gray-700">Download your data anytime as a CSV ready to use</p>
-          </article>
-          <article className="flex items-center flex-col p-6 bg-gray-50 rounded-lg shadow hover:shadow-md transition">
-            <h4 className="flex items-center text-lg font-semibold text-emerald-600 mb-2"><img src={bellIcon} alt="Notification icon" className="w-5 h-5 mr-1"/>Budget Alerts</h4>
-            <p className="text-gray-700">Get notified of budget limits</p>
-          </article>
+          </div>
         </div>
       </section>
       </main>
 
       {/* Footer */}
       <footer className="bg-gray-700 text-gray-200 py-6 text-center">
-        <p>© {new Date().getFullYear()} Personal Finance Tracker. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} UPBUDGET. All rights reserved.</p>
       </footer>
 
         </div>

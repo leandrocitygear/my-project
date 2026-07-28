@@ -7,9 +7,9 @@ export default function Layout() {
     <div className="flex bg-gray-200 max-h-screen ">
       <Sidebar />
 
-      <div className="flex flex-col flex-1 overflow-hidden">
-      <MainContent />
-</div>
+      <div className="flex flex-col flex-1 overflow-hidden min-w-0 min-h-0">
+        <MainContent />
+      </div>
     </div>
   );
 }
