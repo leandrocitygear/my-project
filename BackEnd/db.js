@@ -6,11 +6,10 @@ dotenv.config();
 const { Pool } = pkg;
 
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'personalFinanceTrackerDB',
-    password: process.env.DATABASE_URL,
-    port: 5432,
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false,
+    },
 });
 
 export default pool;
