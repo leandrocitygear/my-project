@@ -8,7 +8,7 @@ import DeleteEditTransaction from "./DeleteEditTransaction";
 
 
 function RecentTransactions () {
-      const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [show, setShow] = useState(false);
   const [sortOrder, setSortOrder] = useState("recent");
   const [showFilters, setShowFilters] = useState(false);
@@ -129,7 +129,7 @@ function RecentTransactions () {
                   <div className="flex justify-end">
                   <button onClick={()=> setShowAddTransForm(false)} className="cursor-pointer border border-transparent rounded-lg hover:bg-gray-500" title="Close Form"><img src={closeIcon} alt="" /></button>
                   </div>
-                  <AddTransactionForm />
+                  <AddTransactionForm setShowAddTransForm={setShowAddTransForm} />
                   
                 </div>
                 )}
