@@ -12,6 +12,7 @@ function RecentTransactions () {
   const [show, setShow] = useState(false);
   const [sortOrder, setSortOrder] = useState("recent");
   const [showFilters, setShowFilters] = useState(false);
+  const [showSort, setShowSort] = useState(false);
   const [showAddTransForm, setShowAddTransForm] = useState(false);
   const [showDeleteEditBox, setShowDeleteEditBox] = useState(false);
   const itemsPerPage = 25;
@@ -91,23 +92,26 @@ function RecentTransactions () {
 
               <div>
             <button className="cursor-pointer bg-gray-500 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-gray-600 transition" onClick={() => {
-              setShow(!show);
+              setShow(false);
               setShowFilters(false);
-              setShowAddTransForm(false); 
+              setShowAddTransForm(false);
+              setShowSort(!showSort) 
               }}>
               Sort
             </button>
-            {show && (
-            <div className="absolute z-2 bg-gray-300 flex flex-col rounded-lg mt-1 right-53 " ref={sortRef}>
+            {showSort && (
+            <div className="absolute z-2 bg-gray-300 flex flex-col rounded-lg mt-1" ref={sortRef}>
               <button className="block px-2 py-2 hover:bg-gray-400 transition cursor-pointer" onClick={() => {
                 setSortOrder("recent");
                 setShow(false)
+                setShowSort(false)
                 setCurrentPage(1)
                 }}>Most Recent
               </button>
               <button className="block px-2 py-2 hover:bg-gray-400 transition cursor-pointer" onClick={() => {
                 setSortOrder("oldest");
                 setShow(false)
+                setShowSort(false)
                 setCurrentPage(1)
                 }}>Oldest
               </button>

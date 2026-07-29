@@ -3,7 +3,7 @@
 function Filters() {
 
     return (
-        <div className="flex gap-3 p-2 bg-gray-300 shadow-sm rounded-md absolute z-1 m-1 right-40">
+        <div className="flex gap-3 p-2 bg-gray-300 shadow-sm rounded-md absolute z-1 m-1 ">
             <select name="month" id="">
                 <option value="">All Months</option>
                 <option value="1">January</option>
