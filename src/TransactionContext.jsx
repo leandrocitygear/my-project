@@ -10,20 +10,20 @@ export function TransactionProvider({children}) {
 
     const [transactions,setTransactions] = useState([]);
 
+    async function fetchTransactions(){
+
+        const user = getCurrentUser();
+
+        if(!user) return;
+
+
+        const data = await getTransactions(user.id);
+
+        setTransactions(data);
+    }
 
     useEffect(()=>{
 
-        async function fetchTransactions(){
-
-            const user = getCurrentUser();
-
-            if(!user) return;
-
-
-            const data = await getTransactions(user.id);
-
-            setTransactions(data);
-        }
 
         fetchTransactions();
 
@@ -68,7 +68,8 @@ export function TransactionProvider({children}) {
             value={{
                 transactions,
                 setTransactions,
-                addTransaction
+                addTransaction,
+                fetchTransactions
             }}
         >
             {children}

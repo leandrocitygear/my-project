@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router"
+import { useTransactions } from "../TransactionContext";
 
 
 
@@ -50,6 +51,8 @@ function LoginPage() {
 
 
         // alert("Login successful!");
+        const { fetchTransactions } = useTransactions();
+        await fetchTransactions();
 
         navigate("/dashboard");
 

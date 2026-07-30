@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router"
+import { useTransactions } from "../TransactionContext";
 
 
 
@@ -46,7 +47,7 @@ function SignupPage() {
             );
 
             // alert("Account created!");
-            navigate("/login");
+            navigate("/dashboard");
 
         } catch (err) {
             console.error(err);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, Link } from "react-router"
 import { Flag, Menu, X } from "lucide-react"
 import dashboardIcon from "../assets/dashboard_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg"
+import { useTransactions } from "../TransactionContext"
 
 import chartIcon from "../assets/bar_chart_4_bars_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg"
 import profileIcon from "../assets/contacts_product_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg"
@@ -11,6 +12,7 @@ import logoutIcon from "../assets/logout_24dp_059669_FILL0_wght400_GRAD0_opsz24.
 
 function Sidebar() {
 
+    const { setTransactions } = useTransactions();
 
     const [isOpen, setIsOpen] = useState(() => {
         const saved = localStorage.getItem("sidebarOpen");
@@ -21,6 +23,7 @@ function Sidebar() {
 
     const handleLogout = () => {
         localStorage.removeItem("user");
+        setTransactions([]);
         navigate("/");
     };
 
