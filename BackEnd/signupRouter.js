@@ -28,7 +28,9 @@ router.post('/signup', async (req, res) => {
             [email, hashedPassword]
         )
 
-        res.status(201).json(newUser.rows[0]);
+        res.status(201).json({
+            user: newUser.rows[0]
+        });
     } 
      
     catch(err) {

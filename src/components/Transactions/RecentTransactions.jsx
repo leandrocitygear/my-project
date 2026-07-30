@@ -153,7 +153,7 @@ function RecentTransactions () {
                   <button onClick={()=> setShowAddTransForm(false)} className="cursor-pointer border border-transparent rounded-lg hover:bg-gray-500" title="Close Form"><img src={closeIcon} alt="" /></button>
                   </div>
                   <AddTransactionForm 
-                  user={JSON.parse(localStorage.getItem("user"))}
+                  user={JSON.parse(localStorage.getItem("user") || "null")}
                   setShowAddTransForm={setShowAddTransForm}
                   />
                   
