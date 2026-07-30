@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useTransactions } from "../../TransactionContext";
 
 
-function AddTransactionForm({ user, setShowAddTransForm, fetchTransactions }) {
+function AddTransactionForm({ user, setShowAddTransForm }) {
 
 const [type, setType] = useState("");
 const [date, setDate] = useState("");
@@ -9,6 +10,7 @@ const [category, setCategory] = useState("");
 const [description, setDescription] = useState("");
 const [amount, setAmount] = useState("");
 
+const { addTransaction } = useTransactions();
 
 const incomeCategories = [
         "Salary",
@@ -47,33 +49,14 @@ const incomeCategories = [
    const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("https://my-project-17ds.onrender.com/api/transactions",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({
-                user_id: user.id,
-                date,
-                type,
-                category,
-                description,
-                amount
-            })
-        }
-    );
-
-    if(!response.ok){
-    console.log("Error:", response.status);
-    return;
-}
-
-    const data = await response.json();
-    console.log(data);
-
-
-    await fetchTransactions();
+    await addTransaction({
+        user_id: user.id,
+        date,
+        type,
+        category,
+        description,
+        amount
+    });
     setShowAddTransForm(false);
 };
 

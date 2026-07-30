@@ -3,15 +3,17 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router'
-
+import { TransactionProvider } from './TransactionContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     
+      <TransactionProvider>
       <BrowserRouter>
        <App />
       </BrowserRouter>
+      </TransactionProvider>
 
   </StrictMode>,
 )

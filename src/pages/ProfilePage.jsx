@@ -1,9 +1,12 @@
 import profileIcon from "../assets/contacts_product_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg"
 import userPic from "../../src/assets/icon-7797704_640.png"
 import UserSettingsOptions from "../components/UserSettingsOptions"
+import { getCurrentUser } from "../utils/auth"
 
 
 function ProfilePage() {
+
+    const user = getCurrentUser();
 
     return (
         <div className="lg:pl-16 lg:pr-16 space-y-6">
@@ -20,7 +23,7 @@ function ProfilePage() {
 
                 <div className="flex items-center gap-4 borde">
                 <img src={userPic} alt="" className="h-15 w-15 rounded-[100px] border" />
-                <h3 className="font-semibold  text-lg">johndoe@example.com</h3>
+                <h3 className="font-semibold  text-lg">{user?.email}</h3>
                 </div>
 
                 

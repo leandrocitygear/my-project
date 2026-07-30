@@ -4,6 +4,7 @@ import transactionsIcon from "../../assets/attach_money_24dp_059669_FILL0_wght40
 import AddTransactionForm from "./AddTransactionForm";
 import closeIcon from "../../assets/closeBlack.svg"
 import DeleteEditTransaction from "./DeleteEditTransaction";
+import { useTransactions } from "../../TransactionContext";
 
 
 function RecentTransactions () {
@@ -13,47 +14,41 @@ function RecentTransactions () {
   const [showFilters, setShowFilters] = useState(false);
   const [showAddTransForm, setShowAddTransForm] = useState(false);
   const [showDeleteEditBox, setShowDeleteEditBox] = useState(false);
-  const [transactions, setTransactions] = useState([]);
+  const [filters, setFilters] = useState({
+    month: "",
+    year: "",
+    category: "",
+    type: ""
+  });
 
 
   const itemsPerPage = 25;
-
-  async function fetchTransactions() {
-
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if(!user) return;
-
-    const response = await fetch(`https://my-project-17ds.onrender.com/api/transactions/${user.id}`);
-
-    if(!response.ok){
-    console.log("Error:", response.status);
-    return;
-}
-    
-    const data = await response.json();
-
-    setTransactions(data);
-
-  }
-
-  useEffect(() => {
-
-    fetchTransactions();
-
-  }, []);
+  const { transactions } = useTransactions();
 
   const sortedTransactions = [...transactions].sort(
     (a, b) => {
       return sortOrder === "recent" ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date);
     }
   );
+  
+  const filteredTransactions = sortedTransactions.filter(t => {
 
-  const totalPages = Math.ceil(sortedTransactions.length / itemsPerPage);
+  const date = new Date(t.date);
+
+  return (
+    (!filters.month || date.getUTCMonth() + 1 === Number(filters.month)) &&
+    (!filters.year || date.getUTCFullYear() === Number(filters.year)) &&
+    (!filters.category || t.category === filters.category) &&
+    (!filters.type || t.type === filters.type)
+  );
+
+});
+
+  const totalPages = Math.ceil(filteredTransactions.length / itemsPerPage);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = sortedTransactions.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredTransactions.slice(indexOfFirstItem, indexOfLastItem);
 
   const nextPage = () => currentPage < totalPages && setCurrentPage(currentPage + 1);
   const prevPage = () => currentPage > 1 && setCurrentPage(currentPage - 1);
@@ -85,6 +80,7 @@ function RecentTransactions () {
     };
   }, []);
 
+
   return (
         <div className="bg-white p-4 rounded-lg shadow flex flex-col lg:col-span-2 min-w-0 min-h-0 lg:h-[75vh]">
           {/* Header */}
@@ -111,7 +107,7 @@ function RecentTransactions () {
                   Filters
                 </button>
                 {showFilters && (
-                  <Filters />
+                  <Filters filters={filters} setFilters={setFilters} />
 
                 )}
               </div>
@@ -159,7 +155,6 @@ function RecentTransactions () {
                   <AddTransactionForm 
                   user={JSON.parse(localStorage.getItem("user"))}
                   setShowAddTransForm={setShowAddTransForm}
-                  fetchTransactions={fetchTransactions}
                   />
                   
                 </div>
@@ -188,7 +183,12 @@ function RecentTransactions () {
                     className="border-b border-gray-300 hover:bg-gray-50 text-gray-700 cursor-pointer"
                     onClick={() =>{setShowDeleteEditBox(!showDeleteEditBox)}}
                   >
-                    <td className="py-3 px-4">{t.date}</td>
+                    <td className="py-3 px-4">{new Date(t.date).toLocaleDateString("en-US", {
+                      timeZone: "UTC",
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric"
+                    })}</td>
                     <td className="py-3 px-4">{t.description}</td>
                     <td className="py-3 px-4">{t.category}</td>
                     <td

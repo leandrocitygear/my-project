@@ -1,45 +1,98 @@
+import { useTransactions } from "../../TransactionContext"
 
+function Filters({ filters, setFilters }) {
 
-function Filters() {
+  const { transactions } = useTransactions();
+
+  const categories = [...new Set(transactions.map(t => t.category))];
+  const types = [...new Set(transactions.map(t => t.type))];
+  const years = [...new Set(transactions.map(t => new Date(t.date).getUTCFullYear())
+  )
+].sort((a, b) => b - a);
+  const months = [...new Set(transactions.map(t => new Date(t.date).getUTCMonth() + 1)
+  )
+].sort((a, b) => a - b);
+
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 
     return (
         <div className="flex gap-3 p-2 bg-gray-300 shadow-sm rounded-md absolute z-1 m-1 ">
-            <select name="month" id="">
+            <select name="month" id="" value={filters.month} 
+            onChange={(e) => {
+            setFilters(prev => ({
+                ...prev,
+                month: e.target.value
+            }));
+            setCurrentPage(1);
+            }}>
                 <option value="">All Months</option>
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
+                {months.map(month => (
+                <option key={month} value={month}>
+                {monthNames[month - 1]}
+                </option>
+                ))}
+
+                
+                
             </select>
 
-            <select name="year" id="">
+            <select name="year" id="" value={filters.year}  onChange={(e) => {
+            setFilters(prev => ({
+                ...prev,
+                year: e.target.value
+            }));
+            setCurrentPage(1);
+            }}>
                 <option value="">All Years</option>
-                <option value="2025">2025</option>
-                <option value="2024">2024</option>
-                <option value="2023">2023</option>
+                {years.map(year => (
+                <option key={year} value={year}>
+                {year}
+                </option>
+                ))}
             </select>
 
-            <select name="Category" id="">
+            <select name="category" id="" value={filters.category} onChange={(e) => {
+            setFilters(prev => ({
+                ...prev,
+                category: e.target.value
+            }));
+            setCurrentPage(1);
+            }}>
                 <option value="">All Categories</option>
-                <option value="Food">Food</option>
-                <option value="Bills">Bills</option>
-                <option value="Salary">Salary</option>
-                <option value="Rent">Rent</option>
-                <option value="Car">Car</option>
+                {categories.map(category => (
+                <option key={category} value={category}>
+                {category}
+                </option>
+                ))}
             </select>
 
-            <select name="type" id="">
+            <select name="type" id="" value={filters.type}  onChange={(e) => {
+            setFilters(prev => ({
+                ...prev,
+                type: e.target.value
+            }));
+            setCurrentPage(1);
+            }}>
                 <option value="">All Types</option>
-                <option value="Income">Income</option>
-                <option value="Expense">Expense</option>
+                {types.map(type => (
+                <option key={type} value={type}>
+                {type}
+                </option>
+                ))}
             </select>
 
         </div>
