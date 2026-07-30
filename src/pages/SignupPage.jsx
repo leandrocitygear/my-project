@@ -7,7 +7,8 @@ import { useTransactions } from "../TransactionContext";
 function SignupPage() {
 
     const navigate = useNavigate();
-
+    const { transactions } = useTransactions();
+    
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -41,7 +42,6 @@ function SignupPage() {
                 return;
             }
 
-            const { transactions } = useTransactions();
 
             localStorage.setItem(
                 "user",
