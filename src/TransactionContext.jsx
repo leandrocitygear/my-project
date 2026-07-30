@@ -8,13 +8,16 @@ const TransactionContext = createContext();
 
 export function TransactionProvider({children}) {
 
-    const [transactions,setTransactions] = useState([]);
+    const [transactions, setTransactions] = useState([]);
 
     async function fetchTransactions(){
 
         const user = getCurrentUser();
 
-        if(!user) return;
+        if(!user) {
+            setTransactions([]);
+            return;
+        };
 
 
         const data = await getTransactions(user.id);

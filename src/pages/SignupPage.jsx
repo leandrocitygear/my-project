@@ -41,6 +41,8 @@ function SignupPage() {
                 return;
             }
 
+            const { transactions } = useTransactions();
+
             localStorage.setItem(
                 "user",
                 JSON.stringify(data.user)

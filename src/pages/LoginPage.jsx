@@ -7,6 +7,8 @@ import { useTransactions } from "../TransactionContext";
 function LoginPage() {
 
     const navigate = useNavigate();
+    const { fetchTransactions } = useTransactions();
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -51,7 +53,6 @@ function LoginPage() {
 
 
         // alert("Login successful!");
-        const { fetchTransactions } = useTransactions();
         await fetchTransactions();
 
         navigate("/dashboard");
