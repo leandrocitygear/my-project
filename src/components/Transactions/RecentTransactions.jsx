@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { transactionsMockData } from "../../MockData";
 import Filters from "./Filters";
 import transactionsIcon from "../../assets/attach_money_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg";
 import AddTransactionForm from "./AddTransactionForm";
@@ -12,12 +11,39 @@ function RecentTransactions () {
   const [show, setShow] = useState(false);
   const [sortOrder, setSortOrder] = useState("recent");
   const [showFilters, setShowFilters] = useState(false);
-  const [showSort, setShowSort] = useState(false);
   const [showAddTransForm, setShowAddTransForm] = useState(false);
   const [showDeleteEditBox, setShowDeleteEditBox] = useState(false);
+  const [transactions, setTransactions] = useState([]);
+
+
   const itemsPerPage = 25;
 
-  const sortedTransactions = [...transactionsMockData].sort(
+  async function fetchTransactions() {
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if(!user) return;
+
+    const response = await fetch(`https://my-project-17ds.onrender.com/api/transactions/${user.id}`);
+
+    if(!response.ok){
+    console.log("Error:", response.status);
+    return;
+}
+    
+    const data = await response.json();
+
+    setTransactions(data);
+
+  }
+
+  useEffect(() => {
+
+    fetchTransactions();
+
+  }, []);
+
+  const sortedTransactions = [...transactions].sort(
     (a, b) => {
       return sortOrder === "recent" ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date);
     }
@@ -53,9 +79,9 @@ function RecentTransactions () {
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -91,27 +117,24 @@ function RecentTransactions () {
               </div>
 
               <div>
-            <button className="cursor-pointer bg-gray-500 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-gray-600 transition" onClick={() => {
-              setShow(false);
+            <button ref={sortRef} className="cursor-pointer bg-gray-500 text-white px-2 py-2 text-xs sm:text-base rounded-lg font-semibold hover:bg-gray-600 transition" onClick={() => {
+              setShow(!show);
               setShowFilters(false);
               setShowAddTransForm(false);
-              setShowSort(!showSort) 
               }}>
               Sort
             </button>
-            {showSort && (
-            <div className="absolute z-2 bg-gray-300 flex flex-col rounded-lg mt-1" ref={sortRef}>
+            {show && (
+            <div className="absolute z-2 bg-gray-300 flex flex-col rounded-lg mt-1" >
               <button className="block px-2 py-2 hover:bg-gray-400 transition cursor-pointer" onClick={() => {
                 setSortOrder("recent");
                 setShow(false)
-                setShowSort(false)
                 setCurrentPage(1)
                 }}>Most Recent
               </button>
               <button className="block px-2 py-2 hover:bg-gray-400 transition cursor-pointer" onClick={() => {
                 setSortOrder("oldest");
                 setShow(false)
-                setShowSort(false)
                 setCurrentPage(1)
                 }}>Oldest
               </button>
@@ -133,7 +156,11 @@ function RecentTransactions () {
                   <div className="flex justify-end">
                   <button onClick={()=> setShowAddTransForm(false)} className="cursor-pointer border border-transparent rounded-lg hover:bg-gray-500" title="Close Form"><img src={closeIcon} alt="" /></button>
                   </div>
-                  <AddTransactionForm setShowAddTransForm={setShowAddTransForm} />
+                  <AddTransactionForm 
+                  user={JSON.parse(localStorage.getItem("user"))}
+                  setShowAddTransForm={setShowAddTransForm}
+                  fetchTransactions={fetchTransactions}
+                  />
                   
                 </div>
                 )}

@@ -33,6 +33,15 @@ function LoginPage() {
 
         const data = await response.json();
 
+        if(response.ok){
+
+    localStorage.setItem(
+        "user",
+        JSON.stringify(data.user)
+    );
+
+    console.log(data.user);
+}
 
         if (!response.ok) {
             alert(data.message);
@@ -86,9 +95,9 @@ function LoginPage() {
                 </button>
                 </form>
 
-                <p class="text-sm text-center text-gray-600 mt-6">
+                <p className="text-sm text-center text-gray-600 mt-6">
                 Don't have an account?
-                <Link to="/signup" class="text-emerald-600 font-medium hover:underline ml-1">
+                <Link to="/signup" className="text-emerald-600 font-medium hover:underline ml-1">
                     Sign up
                 </Link>
                 </p>

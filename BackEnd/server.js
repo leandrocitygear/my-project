@@ -3,6 +3,7 @@ import cors from 'cors'
 import router from './signupRouter.js'
 import loginRouter from './loginRouter.js';
 import dotenv from "dotenv";
+import transactionRouter from './transactions.js';
 
 dotenv.config();
 
@@ -14,6 +15,9 @@ app.use(express.json());
 
 app.use("/api", router);
 app.use("/api", loginRouter);
+app.use("/api", transactionRouter)
+
+
 
 app.listen(PORT, () => {
     console.log('Server running');
