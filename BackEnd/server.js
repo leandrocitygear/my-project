@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use("/api", router);
 app.use("/api", loginRouter);
-app.use("/api", transactionRouter)
+app.use("/api/transactions", transactionRouter)
 
 app.get("/api/test", (req, res) => {
     res.json({
