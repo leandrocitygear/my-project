@@ -17,6 +17,11 @@ app.use("/api", router);
 app.use("/api", loginRouter);
 app.use("/api", transactionRouter)
 
+app.get("/api/test", (req, res) => {
+    res.json({
+        message: "Backend is alive"
+    });
+});
 
 
 app.listen(PORT, () => {
