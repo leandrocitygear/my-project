@@ -40,8 +40,13 @@ function SignupPage() {
                 return;
             }
 
+            localStorage.setItem(
+                "user",
+                JSON.stringify(data.user)
+            );
+
             // alert("Account created!");
-            navigate("/dashboard");
+            navigate("/login");
 
         } catch (err) {
             console.error(err);

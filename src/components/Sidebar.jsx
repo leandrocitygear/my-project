@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router"
+import { useNavigate } from "react-router"
 import { Flag, Menu, X } from "lucide-react"
 import dashboardIcon from "../assets/dashboard_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg"
 
@@ -16,6 +16,13 @@ function Sidebar() {
         const saved = localStorage.getItem("sidebarOpen");
         return saved ? JSON.parse(saved) : false;
     })
+
+     const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        navigate("/");
+    };
 
 
     return (
@@ -36,9 +43,9 @@ function Sidebar() {
                     </Link>
 
                 </nav>
-                    <Link to="/" className="flex items-center gap-2 hover:text-white mb-6 text-nowrap justify-self-end text-xl h-8">
+                    <button onClick={handleLogout} className="flex items-center gap-2 hover:text-white mb-6 text-nowrap justify-self-end text-xl h-8">
                         <img src={logoutIcon} alt="logout icon" title="Log Out"/> {isOpen && "Log Out"}
-                    </Link>
+                    </button>
 
             </div>
 
