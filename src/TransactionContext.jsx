@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getTransactions } from "./api/transactionsAPI";
+import { getTransactions, deleteTransaction, updateTransaction } from "./api/transactionsAPI";
 import { getCurrentUser } from "./utils/auth";
 
 
@@ -64,6 +64,22 @@ export function TransactionProvider({children}) {
 
     }
 
+    const updateTransactionById = async (id, updatedData) => {
+    const updated = await updateTransaction(id, updatedData);
+
+        setTransactions(prev =>
+            prev.map(t => t.id === updated.id ? updated : t)
+        );
+    };
+
+    const deleteTransactionById = async (id) => {
+        await deleteTransaction(id);
+
+        setTransactions(prev =>
+            prev.filter(t => t.id !== id)
+        );
+    };
+
 
 
     return (
@@ -72,7 +88,9 @@ export function TransactionProvider({children}) {
                 transactions,
                 setTransactions,
                 addTransaction,
-                fetchTransactions
+                fetchTransactions,
+                updateTransactionById,
+                deleteTransactionById
             }}
         >
             {children}

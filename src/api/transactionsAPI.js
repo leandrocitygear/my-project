@@ -10,3 +10,31 @@ export async function getTransactions(userId) {
 
     return response.json();
 }
+
+export async function updateTransaction(id, updatedTransaction) {
+    const response = await fetch(`${API_URL}/api/transactions/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedTransaction),
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to update transaction");
+    }
+
+    return response.json();
+}
+
+export async function deleteTransaction(id) {
+    const response = await fetch(`${API_URL}/api/transactions/${id}`, {
+        method: "DELETE",
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to delete transaction");
+    }
+
+    return response.json();
+}

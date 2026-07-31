@@ -14,6 +14,7 @@ function RecentTransactions () {
   const [showFilters, setShowFilters] = useState(false);
   const [showAddTransForm, setShowAddTransForm] = useState(false);
   const [showDeleteEditBox, setShowDeleteEditBox] = useState(false);
+  const [selectedTransaction, setSelectedTransaction] = useState(null);
   const [filters, setFilters] = useState({
     month: "",
     year: "",
@@ -23,7 +24,7 @@ function RecentTransactions () {
 
 
   const itemsPerPage = 25;
-  const { transactions } = useTransactions();
+  const { transactions, updateTransactionById, deleteTransactionById } = useTransactions();
 
   const sortedTransactions = [...transactions].sort(
     (a, b) => {
@@ -91,7 +92,11 @@ function RecentTransactions () {
             </div>
             {showDeleteEditBox && (
               <div className=" flex items-center bg-gray-300  px-2 py-1 rounded-4xl gap-2"> 
-              <DeleteEditTransaction/>
+              <DeleteEditTransaction
+              transaction={selectedTransaction}
+              deleteTransactionById={deleteTransactionById}
+              updateTransactionById={updateTransactionById}
+              />
           
               <button onClick={() => {setShowDeleteEditBox(false)}} className="cursor-pointer border border-transparent rounded-lg hover:bg-gray-500" title="Close Form"><img src={closeIcon} alt="" /></button>
             
@@ -181,7 +186,7 @@ function RecentTransactions () {
                   <tr
                     key={i}
                     className="border-b border-gray-300 hover:bg-gray-50 text-gray-700 cursor-pointer"
-                    onClick={() =>{setShowDeleteEditBox(!showDeleteEditBox)}}
+                    onClick={() => {setSelectedTransaction(t), setShowDeleteEditBox(true)}}
                   >
                     <td className="py-3 px-4">{new Date(t.date).toLocaleDateString("en-US", {
                       timeZone: "UTC",
