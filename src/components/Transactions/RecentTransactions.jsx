@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import Filters from "./Filters";
 import transactionsIcon from "../../assets/attach_money_24dp_059669_FILL0_wght400_GRAD0_opsz24.svg";
 import AddTransactionForm from "./AddTransactionForm";
-import closeIcon from "../../assets/closeBlack.svg"
 import DeleteEditTransaction from "./DeleteEditTransaction";
 import { useTransactions } from "../../TransactionContext";
 
@@ -23,7 +22,7 @@ function RecentTransactions () {
   });
 
 
-  const itemsPerPage = 25;
+  const itemsPerPage = 15;
   const { transactions, updateTransactionById, deleteTransactionById } = useTransactions();
 
   const sortedTransactions = [...transactions].sort(
@@ -91,14 +90,13 @@ function RecentTransactions () {
               <h1 className="text-3xl font-medium">Transactions</h1>
             </div>
             {showDeleteEditBox && (
-              <div className=" flex items-center bg-gray-300  px-2 py-1 rounded-4xl gap-2"> 
+              <div className=""> 
               <DeleteEditTransaction
               transaction={selectedTransaction}
               deleteTransactionById={deleteTransactionById}
               updateTransactionById={updateTransactionById}
+              setShowDeleteEditBox={setShowDeleteEditBox}
               />
-          
-              <button onClick={() => {setShowDeleteEditBox(false)}} className="cursor-pointer border border-transparent rounded-lg hover:bg-gray-500" title="Close Form"><img src={closeIcon} alt="" /></button>
             
             </div>
             )}
@@ -112,7 +110,7 @@ function RecentTransactions () {
                   Filters
                 </button>
                 {showFilters && (
-                  <Filters filters={filters} setFilters={setFilters} />
+                  <Filters filters={filters} setFilters={setFilters} setCurrentPage={setCurrentPage}/>
 
                 )}
               </div>
@@ -184,8 +182,9 @@ function RecentTransactions () {
               <tbody>
                 {currentItems.map((t, i) => (
                   <tr
-                    key={i}
-                    className="border-b border-gray-300 hover:bg-gray-50 text-gray-700 cursor-pointer"
+                    key={t.id}
+                    className={`border-b border-gray-300 hover:bg-gray-200 text-gray-700 cursor-pointer 
+                      ${selectedTransaction?.id === t.id ? "bg-emerald-100" : ""}`}
                     onClick={() => {setSelectedTransaction(t), setShowDeleteEditBox(true)}}
                   >
                     <td className="py-3 px-4">{new Date(t.date).toLocaleDateString("en-US", {

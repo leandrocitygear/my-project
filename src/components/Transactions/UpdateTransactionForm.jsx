@@ -1,13 +1,48 @@
 import { useState } from "react";
 
 
-function updateTransactionForm({ transactions, updateTransactionById, closeForm }) {
+function UpdateTransactionForm({ transaction, updateTransactionById, closeForm }) {
 
 const [date, setDate] = useState(transaction.date.slice(0,10));
 const [type, setType] = useState(transaction.type);
 const [category, setCategory] = useState(transaction.category);
 const [description, setDescription] = useState(transaction.description);
 const [amount, setAmount] = useState(transaction.amount);
+
+const incomeCategories = [
+        "Salary",
+        "Freelance",
+        "Business",
+        "Investments",
+        "Gift",
+        "Other Income"
+    ];
+
+    const expenseCategories = [
+        "Housing",
+        "Utilities & Bills",
+        "Transportation",
+        "Food",
+        "Health & Wellness",
+        "Personal Care",
+        "Family & Children",
+        "Education",
+        "Debt Payments",
+        "Savings & Investments",
+        "Entertainment & Recreation",
+        "Travel",
+        "Gifts & Donations",
+        "Insurance",
+        "Pets",
+        "Work Expenses",
+        "Taxes & Government",
+        "Miscellaneous"
+    ];
+
+    const categories = type === "Income" 
+        ? incomeCategories 
+        : expenseCategories;
+
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +64,7 @@ const handleSubmit = async (e) => {
             <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 content-between gap-4">
                     <label className="text-xl font-semibold"  htmlFor="date">Date: </label>
-                    <input className="text-white rounded-2xl bg-gray-500 px-2 py-1" type="date" name="date" id="date" value={date} onChange={(e)=>setDate(e.target.value)} required/>
+                    <input className="text-white rounded-2xl bg-gray-500 px-2 py-1" type="date" name="date" id="date" value={date} onChange={(e)=>{setDate(e.target.value); setCategory("");}} required/>
                     
                      <label className="text-xl font-semibold" htmlFor="type">Type:</label>
                      <select className="bg-gray-500 text-white cursor-pointer py-2 rounded-2xl px-2" value={type} onChange={(e) => {setType(e.target.value)}} name="type" id="type" required>
@@ -62,4 +97,4 @@ const handleSubmit = async (e) => {
     )
 }
 
-export default updateTransactionForm;
+export default UpdateTransactionForm;

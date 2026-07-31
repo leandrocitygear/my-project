@@ -1,6 +1,6 @@
 import { useTransactions } from "../../TransactionContext"
 
-function Filters({ filters, setFilters }) {
+function Filters({ filters, setFilters, setCurrentPage }) {
 
   const { transactions } = useTransactions();
 
