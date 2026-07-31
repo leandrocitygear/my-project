@@ -4,6 +4,8 @@ import transactionsIcon from "../../assets/attach_money_24dp_059669_FILL0_wght40
 import AddTransactionForm from "./AddTransactionForm";
 import DeleteEditTransaction from "./DeleteEditTransaction";
 import { useTransactions } from "../../TransactionContext";
+import closeIcon from "../../assets/closeBlack.svg";
+
 
 
 function RecentTransactions () {
