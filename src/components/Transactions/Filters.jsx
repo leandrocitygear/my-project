@@ -30,7 +30,7 @@ const monthNames = [
 
 
     return (
-        <div className="flex gap-3 p-2 bg-gray-300 shadow-sm rounded-md absolute z-1 m-1 ">
+        <div className="grid grid-cols-1 gap-3 p-4 bg-gray-300 shadow-sm absolute sm:m-1 z-10 top-1/2 sm:top-auto left-1/2 sm:left-auto -translate-x-1/2 -translate-y-1/2 sm:translate-y-0 sm:translate-x-0 rounded-4xl">
             <select name="month" id="" value={filters.month} 
             onChange={(e) => {
             setFilters(prev => ({
@@ -39,7 +39,7 @@ const monthNames = [
             }));
             setCurrentPage(1);
             }}>
-                <option value="">All Months</option>
+                <option className="border-2 border-red-500" value="">All Months</option>
                 {months.map(month => (
                 <option key={month} value={month}>
                 {monthNames[month - 1]}

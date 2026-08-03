@@ -19,11 +19,11 @@ function ProfilePage() {
 
             <div className="gap-6 flex flex-col h-[calc(100vh-8rem)]">
 
-            <div className="rounded-full bg-gray-300 p-1  flex items-center grid grid-cols-2">
+            <div className="rounded-full bg-gray-300 sm:p-1 p-4 justify-items-center items-center grid sm:grid-cols-2 grid-cols-1">
 
-                <div className="flex items-center gap-4 borde">
+                <div className="flex items-center gap-4">
                 <img src={userPic} alt="" className="h-15 w-15 rounded-[100px] border" />
-                <h3 className="font-semibold  text-lg">{user?.email}</h3>
+                <h3 className="font-semibold text-sm sm:text-lg">{user?.email}</h3>
                 </div>
 
                 

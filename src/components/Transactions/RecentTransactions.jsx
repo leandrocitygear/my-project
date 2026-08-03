@@ -86,7 +86,7 @@ function RecentTransactions () {
   return (
         <div className="bg-white p-4 rounded-lg shadow flex flex-col lg:col-span-2 min-w-0 min-h-0 lg:h-[75vh]">
           {/* Header */}
-          <div className="flex justify-between items-center border-b pb-2 flex-shrink-0">
+          <div className="flex flex-col sm:flex-row sm:justify-between justify-center items-center border-b pb-2 flex-shrink-0">
             <div className="flex items-center gap">
               <img src={transactionsIcon} alt="Transactions" className="w-6 h-6" />
               <h1 className="text-3xl font-medium">Transactions</h1>
@@ -126,7 +126,7 @@ function RecentTransactions () {
               Sort
             </button>
             {show && (
-            <div className="absolute z-2 bg-gray-300 flex flex-col rounded-lg mt-1" >
+            <div className="sm:grid sm:grid-cols-1 gap-3 p-4 bg-gray-300 shadow-sm absolute sm:m-1 z-10 top-1/2 sm:top-auto left-1/2 sm:left-auto -translate-x-1/2 -translate-y-1/2 sm:translate-y-0 sm:translate-x-0 rounded-4xl mt-1" >
               <button className="block px-2 py-2 hover:bg-gray-400 transition cursor-pointer" onClick={() => {
                 setSortOrder("recent");
                 setShow(false)
