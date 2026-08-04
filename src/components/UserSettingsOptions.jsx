@@ -1,8 +1,11 @@
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import ExportButton from './ExportButton'
 
 
 function UserSettingsOptions() {
+
+    const [showExportForm, setShowExportForm] = useState(false)
 
 
     return (
@@ -10,10 +13,13 @@ function UserSettingsOptions() {
 
             <div className="flex px-4 justify-between items-center rounded-full bg-gray-500 text-white h-10">
                 <h2 className="font-semibold text-lg">Export Data</h2>
-                <button className="cursor-pointer bg-gray-800 text-white w-20 h-8 text-xs sm:text-base rounded-full font-semibold hover:bg-gray-600 transition">CSV</button>
-                <button className="cursor-pointer bg-gray-800 text-white w-20 h-8 text-xs sm:text-base rounded-full font-semibold hover:bg-gray-600 transition">PDF</button>
-
-
+                
+                    <button className="cursor-pointer bg-gray-800 text-white w-20 h-8 text-xs sm:text-base rounded-full font-semibold hover:bg-gray-600 transition" onClick={() => 
+                        setShowExportForm(true)
+                    }
+                    >CSV
+                    </button>
+                    {showExportForm && (<ExportButton setShowExportForm={setShowExportForm}/>)}
             </div>
 
             <div className="flex px-4 justify-between items-center rounded-full bg-gray-500 text-white h-10">
