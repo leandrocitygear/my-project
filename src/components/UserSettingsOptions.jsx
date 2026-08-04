@@ -1,11 +1,13 @@
 
 import { useState } from 'react'
 import ExportButton from './ExportButton'
+import ChangePasswordForm from './ChangePasswordForm'
 
 
 function UserSettingsOptions() {
 
     const [showExportForm, setShowExportForm] = useState(false)
+    const [showChangePasswordForm, setShowChangePasswordForm] = useState(false)
 
 
     return (
@@ -24,7 +26,9 @@ function UserSettingsOptions() {
 
             <div className="flex px-4 justify-between items-center rounded-full bg-gray-500 text-white h-10">
                 <h2 className="font-semibold text-lg">Password</h2>
-                <button className="cursor-pointer bg-gray-800 text-white w-20 h-8 text-xs sm:text-base rounded-full font-semibold hover:bg-gray-600 transition">Change</button>
+                <button className="cursor-pointer bg-gray-800 text-white w-20 h-8 text-xs sm:text-base rounded-full font-semibold hover:bg-gray-600 transition" onClick={() => setShowChangePasswordForm(true)}
+                >Change</button>
+                {showChangePasswordForm && (<ChangePasswordForm setShowChangePasswordForm={setShowChangePasswordForm}/>)}
             </div>
             <div className="flex px-4 justify-between items-center rounded-full bg-gray-500 text-white h-10 ">
                 <h2 className="font-semibold text-lg">Close Account</h2>
