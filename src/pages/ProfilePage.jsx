@@ -32,7 +32,7 @@ function ProfilePage() {
 
             </div>
 
-            <div className="flex justify-center space-x-8">
+            <div className="flex flex-col lg:justify-center space-x-8">
 
                 <UserSettingsOptions />
                 <FeedBackForm />

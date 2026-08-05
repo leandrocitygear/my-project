@@ -66,9 +66,9 @@ function CategoryPieChart() {
     };
 
     return (
-        <div className="bg-white p-4 rounded-lg shadow h-full">
+        <div className="bg-white p-4 rounded-lg shadow min-w-0">
                 <h4 className="text-lg font-semibold ">Spending by Category</h4>
-            <div className="h-164">
+            <div className="relative h-[500px] w-full">
             <Doughnut data={data} options={options}/>
             </div>
         </div>
