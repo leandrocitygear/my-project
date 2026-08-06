@@ -9,6 +9,8 @@ import { useNavigate } from "react-router";
 
 function DeleteAccountForm({ setShowDeleteAccountForm }) {
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -23,7 +25,7 @@ function DeleteAccountForm({ setShowDeleteAccountForm }) {
 
             setShowDeleteAccountForm(false);
 
-            navigate("/")
+            navigate("/");
             
         } catch (error) {
             console.error(error);
