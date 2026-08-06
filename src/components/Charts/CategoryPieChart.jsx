@@ -1,8 +1,9 @@
 import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useTransactions } from "../../TransactionContext";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 function CategoryPieChart() {
 
@@ -62,8 +63,35 @@ function CategoryPieChart() {
         plugins: {
             legend: { position: "bottom" },
             title: { display: true },
+
+        tooltip: {
+            callbacks: {
+                label: function(context) {
+                    const value = context.raw;
+
+                    return `${context.label}: $${value.toFixed(2)}`;
+                }
+            }
         },
-    };
+
+        datalabels: {
+            color: "#000",
+            font: {
+                weight: "normal",
+                size: 14,
+            },
+            formatter: (value) => {
+                if (value >= 1000) {
+                    return `$${(value / 1000).toFixed(1)}k`;
+                }
+
+                return `$${value.toFixed(0)}`;
+            }
+        }
+    }
+};
+
+
 
     return (
         <div className="bg-white p-4 rounded-lg shadow min-w-0">
