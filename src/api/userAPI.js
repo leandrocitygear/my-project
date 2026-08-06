@@ -20,3 +20,21 @@ export async function updatePassword(userId, password) {
 
     return response.json();
 }
+
+export async function deleteAccount(userId) {
+    const response = await fetch(`${API_URL}/users/delete-account`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            userId
+        }),
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to delete account");
+    }
+
+    return response.json();
+}

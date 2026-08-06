@@ -2,12 +2,14 @@
 import { useState } from 'react'
 import ExportButton from './ExportButton'
 import ChangePasswordForm from './ChangePasswordForm'
+import DeleteAccountForm from './DeleteAccountForm'
 
 
 function UserSettingsOptions() {
 
     const [showExportForm, setShowExportForm] = useState(false)
     const [showChangePasswordForm, setShowChangePasswordForm] = useState(false)
+    const [showDeleteAccountForm, setShowDeleteAccountForm] = useState(false)
 
 
     return (
@@ -34,7 +36,10 @@ function UserSettingsOptions() {
                 <h2 className="font-semibold text-lg">Close Account</h2>
                 <button className="cursor-pointer bg-red-500 
                 w-20 h-8 
-                text-white  text-xs sm:text-base rounded-full font-semibold hover:bg-red-700 transition">Delete</button>
+                text-white  text-xs sm:text-base rounded-full font-semibold hover:bg-red-700 transition" 
+                onClick={() => setShowDeleteAccountForm(true)}
+                >Delete</button>
+                {showDeleteAccountForm && (<DeleteAccountForm setShowDeleteAccountForm={setShowDeleteAccountForm}/>)}
             </div>
 
         </div>
