@@ -12,6 +12,7 @@ function SignupPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +22,7 @@ function SignupPage() {
         }
 
         try {
-
+            setLoading(true);
             const response = await fetch("https://my-project-17ds.onrender.com/api/signup", {
                 method: "POST",
 
@@ -54,8 +55,24 @@ function SignupPage() {
         } catch (err) {
             console.error(err);
             alert("Something went wrong.");
+        } finally {
+            setLoading(false);
         }
     };
+
+    if (loading) {
+        return (
+            <section className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+                
+                <div className="animate-spin rounded-full h-16 w-16 border-4 border-emerald-600 border-t-transparent"></div>
+
+                <p className="mt-4 text-gray-700 font-semibold">
+                    Loading your dashboard...
+                </p>
+
+            </section>
+        );
+    }
 
     
     
