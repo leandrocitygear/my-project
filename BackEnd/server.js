@@ -4,6 +4,7 @@ import router from './signupRouter.js'
 import loginRouter from './loginRouter.js';
 import dotenv from "dotenv";
 import transactionRouter from './transactions.js';
+import userRouter from './userRouter.js';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/api", router);
 app.use("/api", loginRouter);
 app.use("/api/transactions", transactionRouter)
+app.use("/api/users", userRouter);
 
 app.get("/api/test", (req, res) => {
     res.json({
