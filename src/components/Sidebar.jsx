@@ -24,7 +24,7 @@ function Sidebar() {
 
 
     return (
-            <div className="sm:w-16 bg-gray-800 text-gray-200 w-full h-auto sm:h-screen p-2">
+            <div className="sm:w-16 bg-gray-800 text-gray-200 w-full h-auto sm:h-screen p-4 sm:p-2">
 
                 <nav className="flex justify-around sm:flex-col sm:h-full sm:justify-start sm:gap-6">
 

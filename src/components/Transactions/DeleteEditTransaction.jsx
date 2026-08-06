@@ -14,9 +14,9 @@ function DeleteEditTransaction({ deleteTransactionById, updateTransactionById, t
  <>
 
             {!showUpdateTransactionForm && (
-                <div className="flex items-center gap-4 bg-gray-300  px-2 py-1 rounded-4xl gap-2">
+                <div className="flex items-center gap-4 bg-gray-300 px-2 py-1 md:rounded-4xl rounded-2xl mt-2 mb-2 md:mt-auto md:mb-auto">
                     <button
-                        className="font-semibold bg-red-500 rounded-xl px-2 text-white cursor-pointer hover:bg-red-700 w-50"
+                        className="font-semibold bg-red-500 rounded-xl px-2 text-white cursor-pointer hover:bg-red-700 md:w-50 w-25"
                         onClick={() => {
                             deleteTransactionById(transaction.id);
                             setShowDeleteEditBox(false);
@@ -27,7 +27,7 @@ function DeleteEditTransaction({ deleteTransactionById, updateTransactionById, t
 
 
                     <button
-                        className="bg-gray-500 rounded-xl font-semibold text-white px-2 cursor-pointer hover:bg-gray-700 w-50"
+                        className="bg-gray-500 rounded-xl font-semibold text-white px-2 cursor-pointer hover:bg-gray-700 md:w-50 w-25"
                         onClick={() => {
                             setShowUpdateTransactionForm(true);
                             
