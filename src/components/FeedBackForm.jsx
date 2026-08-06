@@ -13,7 +13,7 @@ function FeedBackForm() {
 
 
     return (
-        <div className="bg-gray-300 shadow-sm rounded-4xl w-95 p-6">
+        <div className="bg-gray-300 shadow-sm rounded-4xl w-full max-w-95 min-h-55 p-6">
             <h1 className="text-xl font-semibold text-center p-1">Request a feature/FeedBack</h1>
             <form action="https://api.web3forms.com/submit" method="POST">
 

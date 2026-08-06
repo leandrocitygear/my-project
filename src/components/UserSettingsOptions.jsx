@@ -13,7 +13,7 @@ function UserSettingsOptions() {
 
 
     return (
-        <div className="flex flex-col gap-6 bg-gray-300 rounded-4xl  w-95 h-55 p-6">
+        <div className="flex flex-col gap-6 bg-gray-300 rounded-4xl w-full max-w-95 min-h-55 p-6">
 
             <div className="flex px-4 justify-between items-center rounded-full bg-gray-500 text-white h-10">
                 <h2 className="font-semibold text-lg">Export Data</h2>

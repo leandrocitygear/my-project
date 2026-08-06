@@ -11,16 +11,16 @@ function ProfilePage() {
 
     return (
         <div className="lg:pl-16 lg:pr-16 space-y-6">
-        <div className="bg-white p-4 gap-6 rounded-lg shadow  h-[calc(100vh-2rem)] flex flex-col">
+        <div className="bg-white p-4 gap-6 rounded-lg shadow min-h-0 md:h-[calc(100vh-2rem)] flex flex-col">
 
             <div className="flex items-center  ">
             <img src={profileIcon} alt="" className="w-6 h-6"/>
              <h1 className="text-3xl font-medium">Profile</h1>   
             </div>
 
-            <div className="gap-6 flex flex-col h-[calc(100vh-8rem)]">
+            <div className="gap-6 flex flex-col min-h-0">
 
-            <div className="rounded-full bg-gray-300 sm:p-1 p-4 justify-items-center items-center grid sm:grid-cols-2 grid-cols-1">
+            <div className="rounded-4xl bg-gray-300 sm:p-1 p-4 justify-items-center items-center grid sm:grid-cols-2 grid-cols-1">
 
                 <div className="flex items-center gap-4">
                 <img src={userPic} alt="" className="h-15 w-15 rounded-[100px] border"/>
@@ -32,7 +32,7 @@ function ProfilePage() {
 
             </div>
 
-            <div className="flex flex-col lg:flex-row lg:justify-center space-x-8 space-y-8">
+            <div className="flex flex-col lg:flex-row lg:justify-center gap-8">
 
                 <UserSettingsOptions />
                 <FeedBackForm />

@@ -170,14 +170,14 @@ function RecentTransactions () {
           </div>
 
           {/* Table */}
-          <div className="flex-1 min-h-0 min-w-0 overflow-auto mt-2">
+          <div className="h-96 sm:flex-1 min-h-0 min-w-0 overflow-auto mt-2">
             <table className="w-full min-w-0 border-collapse">
               <thead className="sticky top-0 border-b border-gray-400 text-left text-sm tracking-wider bg-gray-100">
                 <tr>
                   <th className="py-3 px-4">Date</th>
                   <th className="py-3 px-4">Description</th>
-                  <th className="py-3 px-4">Category</th>
-                  <th className="py-3 px-4">Type</th>
+                  <th className="hidden sm:table-cell py-3 px-4">Category</th>
+                  <th className="hidden sm:table-cell py-3 px-4">Type</th>
                   <th className="py-3 px-4 text-right">Amount</th>
                 </tr>
               </thead>
@@ -196,9 +196,9 @@ function RecentTransactions () {
                       day: "numeric"
                     })}</td>
                     <td className="py-3 px-4">{t.description}</td>
-                    <td className="py-3 px-4">{t.category}</td>
+                    <td className="hidden sm:table-cell py-3 px-4">{t.category}</td>
                     <td
-                      className={`py-3 px-4 font-medium ${
+                      className={`hidden sm:table-cell py-3 px-4 font-medium ${
                         t.type === "Income" ? "text-emerald-600" : "text-red-500"
                       }`}
                     >
